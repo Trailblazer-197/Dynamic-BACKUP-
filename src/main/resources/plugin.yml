@@ -1,0 +1,11 @@
+name: Dynamic BACKUP+
+version: 1.0.0
+main: com.trailblazer_197_05135.DynamicBackup
+api-version: 1.21
+description: Asynchronous Minecraft server backups with no lag
+author: trailblazer_197_05135
+commands:
+  backup:
+    description: Manage server backups
+    usage: /backup &lt;now|list|restore|cancel&gt; [id]
+    permission: dynamicbackup.admin

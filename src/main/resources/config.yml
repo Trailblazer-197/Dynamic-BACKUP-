@@ -1,0 +1,67 @@
+# Asynchronous Backup Configuration
+
+# Enable asynchronous operations to prevent server lag during backups
+async: true
+
+# Compression settings for efficient storage
+compression:
+  # Compression level (0-9, where 9 provides maximum compression but may take longer)
+  level: 1
+  # Compression format (currently supports ZIP)
+  format: ZIP
+
+# Backup scheduling options
+schedule:
+  # Enable automatic scheduled backups
+  enabled: true
+  # Scheduling type: 'interval' for periodic backups, 'daily' for daily at specific time
+  type: interval
+  # Interval-based scheduling: number of hours between backups (used if type is 'interval')
+  interval_hours: 12
+  # Daily scheduling: time in 24-hour format (HH:MM) for daily backups (used if type is 'daily')
+  daily: "04:00"
+
+# Retention policy to manage backup storage
+retention:
+  # Maximum number of recent backups to keep
+  max_backups: 5
+  # Maximum total storage size for all backups in GB
+  max_size_gb: 5.0
+
+# Folder selection for backups
+backup_folders:
+  # Only folders listed here will be included in backups. Everything else is automatically excluded.
+  include:
+    - world
+    - plugins
+
+# Backup behavior settings
+behavior:
+  # Wait for world save completion before starting backup to ensure data integrity
+  wait_for_save: true
+  # Skip scheduled backup if another backup is currently in progress
+  skip_if_running: true
+
+# Notification settings
+notifications:
+  # Send backup status messages to server console
+  console: true
+  # Send backup status messages to online administrators in-game
+  in_game_admins: true
+  # Discord webhook integration for remote notifications
+  discord:
+    # Enable Discord webhook notifications
+    enabled: false
+    # Discord webhook URL (obtain from Discord channel settings)
+    webhook_url: ""
+    # Custom username for webhook messages
+    username: "Dynamic BACKUP+"
+    # Custom avatar URL for webhook messages
+    avatar_url: ""
+
+# Advanced settings (modify only if you understand the implications)
+advanced:
+  # Number of threads for parallel compression (0 = automatic based on CPU cores)
+  compression_threads: 0
+  # Buffer size for file operations in KB (higher values may improve performance on fast storage)
+  buffer_size_kb: 8192
